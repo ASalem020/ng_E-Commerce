@@ -53,15 +53,15 @@ export class SignupForm {
   // password match validator
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password');
-    const confirmPassword = control.get('rePassword');
+    const rePassword = control.get('rePassword');
     
-    if (password && confirmPassword && password.value !== confirmPassword.value) {
-      confirmPassword.setErrors({ passwordMismatch: true });
+    if (password && rePassword && password.value !== rePassword.value) {
+      rePassword.setErrors({ passwordMismatch: true });
       return { passwordMismatch: true };
     }
     
-    if (confirmPassword?.hasError('passwordMismatch')) {
-      confirmPassword.setErrors(null);
+    if (rePassword?.hasError('passwordMismatch')) {
+      rePassword.setErrors(null);
     }
     
     return null;
@@ -103,7 +103,7 @@ export class SignupForm {
         name: this.signupForm.get('name')?.value,
         email: this.signupForm.get('email')?.value,
         password: this.signupForm.get('password')?.value,
-        confirmPassword: this.signupForm.get('rePassword')?.value,
+        rePassword: this.signupForm.get('rePassword')?.value,
         phone: this.signupForm.get('phone')?.value
       };
       
