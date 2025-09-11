@@ -1,0 +1,17 @@
+@for (order of allOrders; track order.id) {
+  <div>
+    <h1>{{ order.id }}</h1>
+    <h1>{{ order.cartItems }}</h1>
+    <h1>{{ order.taxPrice }}</h1>
+    <h1>{{ order.shippingPrice }}</h1>
+    <h1>{{ order.createdAt }}</h1>
+    <h1>{{ order.updatedAt }}</h1>
+    <h1>{{ order.shippingAddress }}</h1>
+    <h1>{{ order.paymentMethodType }}</h1>
+    <h1>{{ order.isPaid }}</h1>
+    <h1>{{ order.isDelivered }}</h1>
+    <h1>{{ order.totalOrderPrice }}</h1>
+    <h1>{{ order.user }}</h1>
+    <h1>{{ order.paidAt }}</h1>
+  </div>
+}

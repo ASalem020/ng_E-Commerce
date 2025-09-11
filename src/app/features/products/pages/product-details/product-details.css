@@ -1,0 +1,321 @@
+/* Product Details Page Enhancements */
+
+/* Image Gallery Enhancements */
+.image-gallery {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-gallery img {
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.image-gallery:hover img {
+  transform: scale(1.05);
+}
+
+/* Thumbnail Hover Effects */
+.thumbnail-item {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.thumbnail-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.thumbnail-item.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.nav-arrow:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Color Selection Enhancements */
+.color-option {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.color-option:hover::before {
+  transform: translateX(100%);
+}
+
+.color-option.selected {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.5);
+}
+
+/* Size Selection Enhancements */
+.size-option {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.size-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.size-option.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.5);
+}
+
+/* Button Enhancements */
+.action-button {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.action-button:hover::before {
+  left: 100%;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
+
+/* Loading Spinner Enhancements */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Product Specifications */
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.spec-item {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.spec-item:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .spec-item {
+    background: rgba(31, 41, 55, 0.5);
+  }
+  
+  .spec-item:hover {
+    background: rgba(31, 41, 55, 0.8);
+  }
+  
+  .thumbnail-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .action-button:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .image-gallery {
+    margin-bottom: 1rem;
+  }
+  
+  .thumbnail-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .color-options,
+  .size-options {
+    justify-content: center;
+  }
+  
+  .action-button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-arrow {
+    opacity: 1 !important;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .image-gallery img,
+  .thumbnail-item,
+  .color-option,
+  .size-option,
+  .action-button {
+    transition: none;
+  }
+  
+  .color-option::before,
+  .action-button::before {
+    display: none;
+  }
+}
+
+/* Focus States */
+.color-option:focus-visible,
+.size-option:focus-visible,
+.action-button:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .thumbnail-item.selected,
+  .color-option.selected,
+  .size-option.selected {
+    border: 3px solid #000;
+  }
+  
+  .action-button {
+    border: 2px solid #000;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .nav-arrow,
+  .action-button,
+  .thumbnail-grid {
+    display: none;
+  }
+  
+  .product-info {
+    break-inside: avoid;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Apply animations */
+.product-section {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.specs-grid {
+  animation: slideIn 0.8s ease-out;
+}
+
+/* Hover effects for interactive elements */
+.interactive:hover {
+  cursor: pointer;
+}
+
+.interactive:active {
+  transform: scale(0.98);
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Error states */
+.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+/* Success states */
+.success {
+  border-color: #10b981;
+  background-color: #f0fdf4;
+}

@@ -1,0 +1,21 @@
+<section class="py-16">
+  <div class="container mx-auto">
+      <h1 class="text-2xl font-bold">Fresh Cart - Popular Products</h1>
+@if(!allProducts) {
+    <app-loading-spinner
+    type="heart" 
+    size="md" 
+    color="primary" 
+    message="Welcome to Fresh Cart Website..."
+    [overlay]="true"
+    [showMessage]="true"></app-loading-spinner>
+}
+@else {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      @for (product of allProducts.slice(0,8); track product.id) {
+        <app-card [product]="product"></app-card>
+      }
+    </div>
+}
+</div>        
+</section>

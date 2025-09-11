@@ -1,0 +1,219 @@
+@if(!products) {
+    <app-loading-spinner
+    type="default" 
+    size="lg" 
+    color="info" 
+    message="Be patient..."
+    [overlay]="true"
+    [showMessage]="true"></app-loading-spinner>
+}
+@else {
+<section class="min-h-screen bg-gray-50 dark-bg-gray-900 py-8">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark-text-white mb-4">
+        Fresh Cart Products
+      </h1>
+      <p class="text-lg text-gray-600 dark-text-gray-400 max-w-2xl mx-auto">
+        Discover our amazing collection of fresh products with the best quality and prices
+      </p>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="bg-white dark-bg-gray-800 rounded-2xl shadow-lg p-6 mb-8">
+      <div class="flex flex-col lg:flex-row gap-6">
+        <!-- Search Bar -->
+        <div class="flex-1">
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              [(ngModel)]="searchQuery"
+              (input)="onSearchChange()"
+              placeholder="Search products by name, category, or brand..."
+              class="w-full pl-10 pr-4 py-3 border border-gray-300 dark-border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 dark-bg-gray-700 dark-text-white transition-colors duration-200"
+            />
+            @if(searchQuery) {
+              <button
+                (click)="clearSearch()"
+                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark-hover:text-gray-300"
+              >
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- Filter and Sort Controls -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <!-- Sort Dropdown -->
+           <!-- future update -->
+          <!-- <div class="relative">
+            <select
+              [(ngModel)]="sortBy"
+              (change)="onSortChange()"
+              class="appearance-none bg-white dark-bg-gray-700 border border-gray-300 dark-border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark-text-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
+            >
+              <option value="">Sort by</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating-desc">Highest Rated</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div> -->
+
+          <!-- View Toggle -->
+          <div class="flex border border-gray-300 dark-border-gray-600 rounded-lg overflow-hidden">
+            <button
+              (click)="setViewMode('grid')"
+              [class.bg-green-600]="viewMode === 'grid'"
+              [class.text-white]="viewMode === 'grid'"
+              [class.text-gray-600]="viewMode !== 'grid'"
+              class="px-4 py-3 hover:bg-gray-100 dark-hover:bg-gray-700 transition-colors duration-200"
+            >
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </button>
+            <button
+              (click)="setViewMode('list')"
+              [class.bg-green-600]="viewMode === 'list'"
+              [class.text-white]="viewMode === 'list'"
+              [class.text-gray-600]="viewMode !== 'list'"
+              class="px-4 py-3 hover:bg-gray-100 dark-hover:bg-gray-700 transition-colors duration-200"
+            >
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filters Display -->
+      @if(searchQuery || sortBy) {
+        <div class="mt-4 flex flex-wrap gap-2">
+          @if(searchQuery) {
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 text-green-800 dark-bg-green-900 dark-text-green-200">
+              Search: "{{ searchQuery }}"
+              <button (click)="clearSearch()" class="ml-2 text-green-600 hover:text-green-800">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </span>
+          }
+          @if(sortBy) {
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800 dark-bg-blue-900 dark-text-blue-200">
+              Sort: {{ getSortLabel(sortBy) }}
+              <button (click)="clearSort()" class="ml-2 text-blue-600 hover:text-blue-800">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Results Summary -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+      <div class="text-sm text-gray-600 dark-text-gray-400 mb-2 sm:mb-0">
+        @if(searchQuery) {
+          Showing {{ filteredProducts.length }} results for "{{ searchQuery }}"
+        } @else {
+          Showing {{ products.length }} of {{ totalItems }} products
+        }
+      </div>
+      <div class="text-sm text-gray-500 dark-text-gray-500">
+        Page {{ page }} of {{ getTotalPages() }}
+      </div>
+    </div>
+    
+    <!-- Products Grid/List -->
+    @if(isLoading) {
+      <div class="flex justify-center items-center py-12">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+    } @else if(filteredProducts.length === 0 && searchQuery) {
+      <!-- No Results -->
+      <div class="text-center py-12">
+        <svg class="mx-auto h-24 w-24 text-gray-400 dark-text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <h3 class="text-lg font-medium text-gray-900 dark-text-white mb-2">No products found</h3>
+        <p class="text-gray-500 dark-text-gray-400 mb-4">Try adjusting your search or filter criteria</p>
+        <button
+          (click)="clearSearch()"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+        >
+          Clear Search
+        </button>
+      </div>
+    } @else {
+      <div [class]="viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6' : 'space-y-4'">
+        @for (product of filteredProducts; track product._id) {
+          <app-card [product]="product" [viewMode]="viewMode"></app-card>
+        }
+      </div>
+    }
+    
+    <!-- Enhanced Pagination -->
+    @if(totalItems > itemsPerPage && !isLoading && filteredProducts.length > 0) {
+      <div class="flex justify-center items-center mt-12">
+        <div class="flex items-center space-x-2">
+          <!-- Previous Button -->
+          <button 
+            (click)="goToPreviousPage()" 
+            [disabled]="page === 1"
+            class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark-bg-gray-800 dark-border-gray-600 dark-text-gray-400 dark-hover:bg-gray-700 dark-hover:text-gray-300"
+          >
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Previous
+          </button>
+          
+          <!-- Page Numbers -->
+          @for (pageNum of getPageNumbers(); track pageNum) {
+            <button 
+              (click)="goToPage(pageNum)"
+              [class]="pageNum === page 
+                ? 'px-4 py-2 text-sm font-medium text-white bg-green-600 border border-green-600 rounded-lg hover:bg-green-700' 
+                : 'px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 dark-bg-gray-800 dark-border-gray-600 dark-text-gray-400 dark-hover:bg-gray-700 dark-hover:text-gray-300'"
+            >
+              {{ pageNum }}
+            </button>
+          }
+          
+          <!-- Next Button -->
+          <button 
+            (click)="goToNextPage()" 
+            [disabled]="page === getTotalPages()"
+            class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark-bg-gray-800 dark-border-gray-600 dark-text-gray-400 dark-hover:bg-gray-700 dark-hover:text-gray-300"
+          >
+            Next
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    }
+  </div>        
+</section>
+}

@@ -1,0 +1,134 @@
+<div class="checkout-container">
+  <div class="checkout-card">
+    <!-- Header Section -->
+    <div class="checkout-header">
+      <h1 class="checkout-title">Secure Checkout</h1>
+      <p class="checkout-subtitle">Complete your order with confidence</p>
+    </div>
+
+    <!-- Form Section -->
+    <form [formGroup]="paymentForm" class="checkout-form">
+      <!-- Shipping Address Section -->
+      <div class="form-group">
+        <label for="details" class="form-label">
+          <svg class="inline w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+          </svg>
+          Shipping Address
+        </label>
+        <div class="relative">
+          <svg class="form-icon w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+          </svg>
+          <input
+            type="text"
+            formControlName="details"
+            id="details"
+            name="details"
+            placeholder="Enter your complete address"
+            class="form-input form-input-with-icon"
+          />
+        </div>
+        <div *ngIf="hasFieldError('details')" class="form-error">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+          </svg>
+          {{ getFieldErrorMessage('details') }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="city" class="form-label">
+          <svg class="inline w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+          </svg>
+          City
+        </label>
+        <div class="relative">
+          <svg class="form-icon w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-6a1 1 0 00-1-1H9a1 1 0 00-1 1v6a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"></path>
+          </svg>
+          <input
+            type="text"
+            formControlName="city"
+            id="city"
+            name="city"
+            placeholder="Enter your city"
+            class="form-input form-input-with-icon"
+          />
+        </div>
+        <div *ngIf="hasFieldError('city')" class="form-error">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+          </svg>
+          {{ getFieldErrorMessage('city') }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone" class="form-label">
+          <svg class="inline w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+          </svg>
+          Phone Number
+        </label>
+        <div class="relative">
+          <svg class="form-icon w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+          </svg>
+          <input
+            type="tel"
+            formControlName="phone"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+            class="form-input form-input-with-icon"
+          />
+        </div>
+        <div *ngIf="hasFieldError('phone')" class="form-error">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+          </svg>
+          {{ getFieldErrorMessage('phone') }}
+        </div>
+      </div>
+
+      <!-- Payment Section -->
+      <div class="payment-section">
+        <h2 class="payment-title">Choose Payment Method</h2>
+        <div class="payment-buttons">
+          <button
+            type="button"
+            (click)="payment('cod')"
+            [disabled]="paymentForm.invalid || isProcessingCOD || isProcessingOnline"
+            class="payment-btn payment-btn-cod"
+          >
+            <span *ngIf="isProcessingCOD" class="loading-spinner"></span>
+            <svg *ngIf="!isProcessingCOD" class="inline w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+            </svg>
+            {{ isProcessingCOD ? 'Processing...' : 'Cash on Delivery' }}
+          </button>
+          <button
+            type="button"
+            (click)="payment('online')"
+            [disabled]="paymentForm.invalid || isProcessingCOD || isProcessingOnline"
+            class="payment-btn payment-btn-online"
+          >
+            <span *ngIf="isProcessingOnline" class="loading-spinner"></span>
+            <svg *ngIf="!isProcessingOnline" class="inline w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+            </svg>
+            {{ isProcessingOnline ? 'Processing...' : 'Online Payment' }}
+          </button>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-4">
+          <svg class="inline w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+          </svg>
+          Your payment information is secure and encrypted
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

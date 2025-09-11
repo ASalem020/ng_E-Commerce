@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -22,7 +23,16 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise-fade-rotating.css",
+                "node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
+                "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+                "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+                "node_modules/ngx-toastr/toastr.css",
+                "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
+
+
+                
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -38,19 +48,23 @@
                   "maximumWarning": "500kB",
                   "maximumError": "1MB"
                 },
+
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "4kB",
                   "maximumError": "8kB"
                 }
               ],
+                
               "outputHashing": "all"
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+              
             }
+            
           },
           "defaultConfiguration": "production"
         },
@@ -86,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

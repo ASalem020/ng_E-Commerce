@@ -1,0 +1,174 @@
+<!-- Loading Spinner Demo -->
+<div class="min-h-screen bg-gray-50 dark-bg-gray-900 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark-text-white mb-4">
+        Fancy Loading Spinners
+      </h1>
+      <p class="text-lg text-gray-600 dark-text-gray-400">
+        Choose from 7 different beautiful loading animations
+      </p>
+    </div>
+
+    <!-- Spinner Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Default Spinner -->
+      <div class="bg-white dark-bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+        <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-4">Default Spinner</h3>
+        <div class="h-32 flex items-center justify-center">
+          <app-loading-spinner 
+            type="default" 
+            size="lg" 
+            color="primary" 
+            overlay="false"
+            message="Loading..."
+          ></app-loading-spinner>
+        </div>
+        <code class="text-sm text-gray-600 dark-text-gray-400">type="default"</code>
+      </div>
+
+      <!-- Dots Spinner -->
+      <div class="bg-white dark-bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+        <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-4">Dots Spinner</h3>
+        <div class="h-32 flex items-center justify-center">
+          <app-loading-spinner 
+            type="dots" 
+            size="lg" 
+            color="success" 
+            overlay="false"
+            message="Processing..."
+          ></app-loading-spinner>
+        </div>
+        <code class="text-sm text-gray-600 dark-text-gray-400">type="dots"</code>
+      </div>
+
+      <!-- Pulse Spinner -->
+      <div class="bg-white dark-bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+        <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-4">Pulse Spinner</h3>
+        <div class="h-32 flex items-center justify-center">
+          <app-loading-spinner 
+            type="pulse" 
+            size="lg" 
+            color="primary" 
+            overlay="false"
+            message="Syncing..."
+          ></app-loading-spinner>
+        </div>
+        <code class="text-sm text-gray-600 dark-text-gray-400">type="pulse"</code>
+      </div>
+
+      <!-- Bounce Spinner -->
+      <div class="bg-white dark-bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+        <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-4">Bounce Spinner</h3>
+        <div class="h-32 flex items-center justify-center">
+          <app-loading-spinner 
+            type="bounce" 
+            size="lg" 
+            color="warning" 
+            overlay="false"
+            message="Bouncing..."
+          ></app-loading-spinner>
+        </div>
+        <code class="text-sm text-gray-600 dark-text-gray-400">type="bounce"</code>
+      </div>
+
+      <!-- Wave Spinner -->
+      <div class="bg-white dark-bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+        <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-4">Wave Spinner</h3>
+        <div class="h-32 flex items-center justify-center">
+          <app-loading-spinner 
+            type="wave" 
+            size="lg" 
+            color="info" 
+            overlay="false"
+            message="Waving..."
+          ></app-loading-spinner>
+        </div>
+        <code class="text-sm text-gray-600 dark-text-gray-400">type="wave"</code>
+      </div>
+
+      <!-- Ring Spinner -->
+      <div class="bg-white dark-bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+        <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-4">Ring Spinner</h3>
+        <div class="h-32 flex items-center justify-center">
+          <app-loading-spinner 
+            type="ring" 
+            size="lg" 
+            color="danger" 
+            overlay="false"
+            message="Spinning..."
+          ></app-loading-spinner>
+        </div>
+        <code class="text-sm text-gray-600 dark-text-gray-400">type="ring"</code>
+      </div>
+
+      <!-- Heart Spinner -->
+      <div class="bg-white dark-bg-gray-800 rounded-xl shadow-lg p-6 text-center md:col-span-2 lg:col-span-3">
+        <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-4">Heart Spinner</h3>
+        <div class="h-32 flex items-center justify-center">
+          <app-loading-spinner 
+            type="heart" 
+            size="xl" 
+            color="danger" 
+            overlay="false"
+            message="With love..."
+          ></app-loading-spinner>
+        </div>
+        <code class="text-sm text-gray-600 dark-text-gray-400">type="heart"</code>
+      </div>
+
+    </div>
+
+    <!-- Usage Examples -->
+    <div class="mt-16 bg-white dark-bg-gray-800 rounded-xl shadow-lg p-8">
+      <h2 class="text-2xl font-bold text-gray-900 dark-text-white mb-6">Usage Examples</h2>
+      
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-2">Basic Usage</h3>
+          <pre class="bg-gray-100 dark-bg-gray-700 rounded-lg p-4 text-sm overflow-x-auto"><code>&lt;app-loading-spinner&gt;&lt;/app-loading-spinner&gt;</code></pre>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-2">With Custom Properties</h3>
+          <pre class="bg-gray-100 dark-bg-gray-700 rounded-lg p-4 text-sm overflow-x-auto"><code>&lt;app-loading-spinner 
+  type="heart" 
+  size="lg" 
+  color="primary" 
+  message="Loading your data..."
+  [overlay]="true"
+  [showMessage]="true"&gt;
+&lt;/app-loading-spinner&gt;</code></pre>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 dark-text-white mb-2">Available Properties</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div>
+              <strong>type:</strong> 'default' | 'dots' | 'pulse' | 'bounce' | 'wave' | 'ring' | 'heart'
+            </div>
+            <div>
+              <strong>size:</strong> 'sm' | 'md' | 'lg' | 'xl'
+            </div>
+            <div>
+              <strong>color:</strong> 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info'
+            </div>
+            <div>
+              <strong>overlay:</strong> boolean (default: true)
+            </div>
+            <div>
+              <strong>message:</strong> string (default: 'Loading...')
+            </div>
+            <div>
+              <strong>showMessage:</strong> boolean (default: true)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
