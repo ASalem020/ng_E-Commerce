@@ -19,7 +19,8 @@ export class AuthServices  extends BaseHttpService{
   }
   signOut() {
   localStorage.clear();
-    this.router.navigate(['/signin']);
+  sessionStorage.clear();
+    this.router.navigate(['/auth/signin']);
   }
   verifyToken() {
     this.get(appApis.verifytoken).subscribe({next:(

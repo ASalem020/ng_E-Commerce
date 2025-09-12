@@ -4,6 +4,7 @@ import { appApis } from '../../../core/constants/appApis';
 import { IGetUserWishlist, IWishlistData } from '../interfaces/IGetUserWishlist';
 import { Observable, map, tap } from 'rxjs';
 import { StateService } from '../../../core/services/state.service';
+import { STORED_KEYS } from '../../../core/constants/storedKeys';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,7 @@ export class WishlistServices extends BaseHttpService {
     getWishlist(): Observable<IGetUserWishlist> {
         return this.get(appApis.getWishlist,{},
             {
-                'token': localStorage.getItem('token')
+                    'token': STORED_KEYS.TOKEN
             }
         );
     }
@@ -25,7 +26,7 @@ export class WishlistServices extends BaseHttpService {
     addToWishlist(productId: string) {
         return this.post(appApis.addToWishlist, { productId },
             {
-                'token': localStorage.getItem('token')
+                'token': STORED_KEYS.TOKEN
             }
         ).pipe(
             tap(() => {
@@ -40,7 +41,7 @@ export class WishlistServices extends BaseHttpService {
         return this.delete(appApis.removeFromWishlist + productId,
             {},
             {
-                'token': localStorage.getItem('token')
+                'token': STORED_KEYS.TOKEN
             }
         ).pipe(
             tap(() => {

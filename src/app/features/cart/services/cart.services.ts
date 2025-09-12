@@ -6,6 +6,7 @@ import { IGetUserCart } from "../interfaces/IGetUserCart";
 import { IUpdateProduct } from "../interfaces/IUpdateProduct";
 import { StateService } from "../../../core/services/state.service";
 import { tap } from 'rxjs/operators';
+import { STORED_KEYS } from "../../../core/constants/storedKeys";
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +18,7 @@ export class CartServices extends BaseHttpService {
         return this.post(appApis.addToCart, {
             productId: productId
         }, {
-            'token': localStorage.getItem('token')
+            'token': STORED_KEYS.TOKEN
         }).pipe(
             tap(() => {
                 // Refresh cart count after adding product
@@ -28,7 +29,7 @@ export class CartServices extends BaseHttpService {
     
     getCart() {
         return this.get<IGetUserCart>(appApis.getCart, {}, {
-            'token': localStorage.getItem('token')
+            'token': STORED_KEYS.TOKEN
         });
     }
 
@@ -49,7 +50,7 @@ export class CartServices extends BaseHttpService {
         return this.put<IUpdateProduct>(appApis.updateQuantity + productId, {
             count: newQuantity
         }, {
-            'token': localStorage.getItem('token')
+            'token': STORED_KEYS.TOKEN
         }).pipe(
             tap(() => {
                 // Refresh cart count after updating quantity
@@ -60,7 +61,7 @@ export class CartServices extends BaseHttpService {
 
     deleteProduct(productId: string) {
         return this.delete(appApis.deleteProduct + productId, {}, {
-            'token': localStorage.getItem('token')
+            'token': STORED_KEYS.TOKEN
         }).pipe(
             tap(() => {
                 // Refresh cart count after deleting product
@@ -71,7 +72,7 @@ export class CartServices extends BaseHttpService {
 
     clearCart() {
         return this.delete(appApis.clearCart, {}, {
-            'token': localStorage.getItem('token')
+            'token': STORED_KEYS.TOKEN
         }).pipe(
             tap(() => {
                 // Refresh cart count after clearing cart

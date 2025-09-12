@@ -1,6 +1,7 @@
 import { inject, PLATFORM_ID } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import { STORED_KEYS } from "../constants/storedKeys";
 
 export const userGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
@@ -8,9 +9,9 @@ export const userGuard: CanActivateFn = (route, state) => {
 
   // Check if we're running in a browser environment
   if (isPlatformBrowser(platformId)) {
-    const token = localStorage.getItem('token');
+    const token = STORED_KEYS.TOKEN;
     if (token) {
-      return router.parseUrl('/home');
+      return router.parseUrl('/app/home');
     } else {
       return true; // Allow access to auth routes
     }

@@ -137,7 +137,7 @@ export class SignupForm {
     interval(1000).pipe(take(5)).subscribe(() => {
       this.timer--;
       if (this.timer === 0) {
-        this.router.navigate(['/signin']);
+        this.router.navigate(['/auth/signin']);
       }
     });
   }

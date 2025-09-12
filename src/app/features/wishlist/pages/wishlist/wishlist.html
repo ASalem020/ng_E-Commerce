@@ -57,7 +57,7 @@
         <h3 class="text-lg font-medium text-gray-900 dark-text-white mb-2">Your wishlist is empty</h3>
         <p class="text-gray-600 dark-text-gray-400 mb-6">Start adding items you love to your wishlist</p>
         <a
-          routerLink="/products"
+          routerLink="/app/products"
           class="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors duration-200"
         >
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,7 +185,7 @@
                 </button>
                 
                 <a
-                  [routerLink]="['/product-details', item._id]"
+                  [routerLink]="['/app/products/details/', item._id, item.slug]"
                   class="px-3 py-2 border border-gray-300 dark-border-gray-600 text-gray-700 dark-text-gray-300 hover:bg-gray-50 dark-hover:bg-gray-700 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center justify-center"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

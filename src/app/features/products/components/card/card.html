@@ -7,7 +7,7 @@
   <div [class]="viewMode === 'list' 
     ? 'relative overflow-hidden flex-shrink-0 w-full sm:w-48 h-48 sm:h-auto' 
     : 'relative overflow-hidden'">
-    <a [routerLink]="['/products/details/', product.id, product.slug]" class="block">
+    <a [routerLink]="['/app/products/details/', product.id, product.slug]" class="block">
       <img
         [class]="viewMode === 'list' 
           ? 'w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' 
@@ -62,7 +62,7 @@
     ? 'p-4 sm:p-5 flex-1 flex flex-col justify-between' 
     : 'p-4 sm:p-5'">
     <!-- Product Title & Description -->
-    <a [routerLink]="['/products/details/', product.id, product.slug]" class="block group/link">
+    <a [routerLink]="['/app/products/details/', product.id, product.slug]" class="block ">
       <h3 [class]="viewMode === 'list' 
         ? 'text-lg sm:text-xl font-semibold text-gray-900 dark-text-white group-hover/link:text-green-600 transition-colors duration-200 mb-2' 
         : 'text-lg sm:text-xl font-semibold text-gray-900 dark-text-white line-clamp-1 group-hover/link:text-green-600 transition-colors duration-200 mb-2'">

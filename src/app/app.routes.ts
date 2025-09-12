@@ -5,15 +5,19 @@ import { authGuard } from './core/guard/auth-guard';
 import { userGuard } from './core/guard/user-guard';
 
 export const routes: Routes = [
-    {
+  {
     path: '',
+    redirectTo: '/auth/signin',
+    pathMatch: 'full'
+  },
+  {
+    path: 'auth',
     component: AuthLayout,
     canActivate: [userGuard],
     loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES)
-    
   },
   {
-    path: '',
+    path: 'app',
     component: MainLayout,
     canActivate: [authGuard],
     children: [

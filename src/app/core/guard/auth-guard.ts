@@ -2,6 +2,7 @@ import { inject, PLATFORM_ID } from "@angular/core";
 import { CanActivateFn, Router } from "@angular/router";
 import { isPlatformBrowser } from "@angular/common";
 import { jwtDecode } from "jwt-decode";
+import { STORED_KEYS } from "../constants/storedKeys";
 
 export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
@@ -9,7 +10,7 @@ export const authGuard: CanActivateFn = () => {
 
   // Check if we're running in a browser environment
   if (isPlatformBrowser(platformId)) {
-    const token = localStorage.getItem('token');
+    const token = STORED_KEYS.TOKEN;
     
     if (token) {
       try {
@@ -18,13 +19,13 @@ export const authGuard: CanActivateFn = () => {
         // localStorage.setItem('userId', decodedToken);
         return true; // Allow access to protected routes
       } catch (error) {
-        return router.parseUrl('/signin');
+        return router.parseUrl('/auth/signin');
       }
     } else {
-      return router.parseUrl('/signin');
+      return router.parseUrl('/auth/signin');
     }
   } else {
     // On server side, redirect to signin
-    return router.parseUrl('/signin');
+    return router.parseUrl('/auth/signin');
   }
 };

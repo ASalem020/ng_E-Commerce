@@ -137,12 +137,12 @@ export class CartPage implements OnInit {
 
   proceedToCheckout() {
     
-    this.router.navigate(['/checkout/', this.cart._id]);
+    this.router.navigate(['/app/checkout/', this.cart._id]);
 
   }
 
   continueShopping() {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/app/products']);
   }
 
   private calculateTotalPrice() {

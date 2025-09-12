@@ -8,6 +8,7 @@ import { WishlistServices } from '../../../features/wishlist/services/wishlist.s
 import { StateService } from '../../../core/services/state.service';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { STORED_KEYS } from '../../constants/storedKeys';
 
 @Component({
   selector: 'app-navbar',
@@ -29,6 +30,10 @@ export class Navbar implements OnInit, OnDestroy {
     }
   }
   
+  
+  
+   userData=STORED_KEYS.USER
+
   get isLoggedIn(): boolean {
     return this._isLoggedIn;
   }
@@ -205,7 +210,7 @@ export class Navbar implements OnInit, OnDestroy {
   onSearchSubmit(event: Event) {
     event.preventDefault();
     if (this.searchQuery().trim()) {
-      this.router.navigate(['/products'], { queryParams: { search: this.searchQuery().trim() } });
+      this.router.navigate(['/app/products'], { queryParams: { search: this.searchQuery().trim() } });
       this.closeSearchModal();
     }
   }
@@ -216,10 +221,10 @@ export class Navbar implements OnInit, OnDestroy {
   }
 
   navigateToCart() {
-    this.router.navigate(['/cart']);
+    this.router.navigate(['/app/cart']);
   }
 
   navigateToWishlist() {
-    this.router.navigate(['/wishlist']);
+    this.router.navigate(['/app/wishlist']);
   }
 }

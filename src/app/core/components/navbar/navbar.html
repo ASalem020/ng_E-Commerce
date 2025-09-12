@@ -4,7 +4,7 @@
       
       <!-- Logo Section -->
       <div class="flex-shrink-0 flex items-center">
-        <a routerLink="/home" class="flex items-center space-x-2 group">
+        <a routerLink="/app/home" class="flex items-center space-x-2 group">
           <div class="relative">
             <img
               src="/freshcart-logo-Dark.svg"
@@ -28,29 +28,29 @@
         <nav class="flex items-center space-x-8">
           @if (isLoggedIn) {
             <a
-              routerLink="/"
-              [class]="isActiveRoute('/home') ? 'text-green-600 dark-text-green-400 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400'"
+              routerLink="/app/home"
+              [class]="isActiveRoute('/app/home') ? 'text-green-600 dark-text-green-400 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400'"
               class="font-medium transition-colors duration-200 relative group"
             >
               Home
               <span 
-                [class]="isActiveRoute('/home') ? 'w-full' : 'w-0 group-hover:w-full'"
+                [class]="isActiveRoute('/app/home') ? 'w-full' : 'w-0 group-hover:w-full'"
                 class="absolute -bottom-1 left-0 h-0.5 bg-green-600 dark-bg-green-400 transition-all duration-200"
               ></span>
             </a>
             <a
-              routerLink="/products"
-              [class]="isActiveRoute('/products') ? 'text-green-600 dark-text-green-400 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400'"
+              routerLink="/app/products"
+              [class]="isActiveRoute('/app/products') ? 'text-green-600 dark-text-green-400 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400'"
               class="font-medium transition-colors duration-200 relative group"
             >
               Products
               <span 
-                [class]="isActiveRoute('/products') ? 'w-full' : 'w-0 group-hover:w-full'"
+                [class]="isActiveRoute('/app/products') ? 'w-full' : 'w-0 group-hover:w-full'"
                 class="absolute -bottom-1 left-0 h-0.5 bg-green-600 dark-bg-green-400 transition-all duration-200"
               ></span>
             </a>
             <a
-              routerLink="/categories"
+              routerLink="/app/categories"
               [class]="isActiveRoute('/categories') ? 'text-green-600 dark-text-green-400 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400'"
               class="font-medium transition-colors duration-200 relative group"
             >
@@ -61,7 +61,7 @@
               ></span>
             </a>
             <a
-              routerLink="/brands"
+              routerLink="/app/brands"
               [class]="isActiveRoute('/brands') ? 'text-green-600 dark-text-green-400 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400'"
               class="font-medium transition-colors duration-200 relative group"
             >
@@ -75,7 +75,7 @@
             <!-- future update -->
             
             <!-- <a
-              routerLink="/orders"
+              routerLink="/app/allorders"
               [class]="isActiveRoute('/orders') ? 'text-green-600 dark-text-green-400 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400'"
               class="font-medium transition-colors duration-200 relative group"
             >
@@ -129,7 +129,7 @@
           <!-- Wishlist Button -->
           <button
             (click)="navigateToWishlist()"
-            [class]="isActiveRoute('/wishlist') ? 'relative p-2 text-red-500 dark-text-red-400 bg-red-50 dark-bg-red-900/20 rounded-lg transition-all duration-200 group' : 'relative p-2 text-gray-500 dark-text-gray-400 hover:text-red-500 dark-hover:text-red-400 hover:bg-red-50 dark-hover:bg-red-900/20 rounded-lg transition-all duration-200 group'"
+            [class]="isActiveRoute('/app/wishlist') ? 'relative p-2 text-red-500 dark-text-red-400 bg-red-50 dark-bg-red-900/20 rounded-lg transition-all duration-200 group' : 'relative p-2 text-gray-500 dark-text-gray-400 hover:text-red-500 dark-hover:text-red-400 hover:bg-red-50 dark-hover:bg-red-900/20 rounded-lg transition-all duration-200 group'"
             title="Wishlist"
           >
             <svg class="h-6 w-6 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
@@ -146,7 +146,7 @@
           <!-- Cart Button -->
           <button
             (click)="navigateToCart()"
-            [class]="isActiveRoute('/cart') ? 'relative p-2 text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 rounded-lg transition-all duration-200 group' : 'relative p-2 text-gray-500 dark-text-gray-400 hover:text-green-600 dark-hover:text-green-400 hover:bg-green-50 dark-hover:bg-green-900/20 rounded-lg transition-all duration-200 group'"
+            [class]="isActiveRoute('/app/cart') ? 'relative p-2 text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 rounded-lg transition-all duration-200 group' : 'relative p-2 text-gray-500 dark-text-gray-400 hover:text-green-600 dark-hover:text-green-400 hover:bg-green-50 dark-hover:bg-green-900/20 rounded-lg transition-all duration-200 group'"
             title="Shopping Cart"
           >
             <svg class="h-6 w-6 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,6 +178,7 @@
             @if (isUserMenuOpen()) {
               <div class="absolute right-0 mt-2 w-48 bg-white dark-bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark-border-gray-700 py-1 z-50 animate-in slide-in-from-top-2 duration-200">
                 
+                
                 <!-- future update -->
                 <!-- <a
                   routerLink="/profile"
@@ -192,7 +193,7 @@
                 <!-- future update -->
                  <!-- orders -->
                 <!-- <a
-                  routerLink="/orders"
+                  routerLink="/app/allorders"
                   class="flex items-center px-4 py-2 text-sm text-gray-700 dark-text-gray-200 hover:bg-gray-100 dark-hover:bg-gray-700 transition-colors duration-200"
                 >
                   <svg class="h-4 w-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -204,7 +205,7 @@
                 <!-- future update -->
                  <!-- wishlist -->
                 <!-- <a
-                  routerLink="/wishlist"
+                  routerLink="/app/wishlist"
                   
                   class="flex items-center px-4 py-2 text-sm text-gray-700 dark-text-gray-200 hover:bg-gray-100 dark-hover:bg-gray-700 transition-colors duration-200"
                 >
@@ -230,13 +231,13 @@
           <!-- Auth Buttons -->
           <div class="flex items-center space-x-2">
             <a
-              routerLink="/signin"
+              routerLink="/auth/signin"
               class="px-4 py-2 text-sm font-medium text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-800 rounded-lg transition-all duration-200"
             >
               Sign in
             </a>
             <a
-              routerLink="/signup"
+              routerLink="/auth/signup"
               class="px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
             >
               Sign up
@@ -271,15 +272,15 @@
           <!-- Navigation Links -->
           @if (isLoggedIn) {
             <a
-              routerLink="/"
-              [class]="isActiveRoute('/cart') ? '!text-green-600 dark-text-green-400 !bg-green-800 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-700'"
+              routerLink="/app/home"
+              [class]="isActiveRoute('/app/cart') ? '!text-green-600 dark-text-green-400 !bg-green-800 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-700'"
               class="block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
               Home
             </a>
             <a
-              routerLink="/wishlist"
-              [class]="isActiveRoute('/wishlist') ? 'text-red-600 dark-text-red-400 bg-red-50 dark-bg-red-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-red-600 dark-hover:text-red-400 hover:bg-red-50 dark-hover:bg-red-900/20'"
+              routerLink="/app/wishlist"
+              [class]="isActiveRoute('/app/wishlist') ? 'text-red-600 dark-text-red-400 bg-red-50 dark-bg-red-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-red-600 dark-hover:text-red-400 hover:bg-red-50 dark-hover:bg-red-900/20'"
               class="flex items-center px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
               <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -293,8 +294,8 @@
               }
             </a>
             <a
-              routerLink="/cart"
-              [class]="isActiveRoute('/cart') ? 'text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400 hover:bg-green-50 dark-hover:bg-green-900/20'"
+              routerLink="/app/cart"
+              [class]="isActiveRoute('/app/cart') ? 'text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-green-600 dark-hover:text-green-400 hover:bg-green-50 dark-hover:bg-green-900/20'"
               class="flex items-center px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
               <svg class="h-5 w-5 mr-2" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
@@ -308,8 +309,8 @@
               }
             </a>
             <a
-              routerLink="/wishlist"
-              [class]="isActiveRoute('/wishlist') ? 'text-red-600 dark-text-red-400 bg-red-50 dark-bg-red-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-red-600 dark-hover:text-red-400 hover:bg-red-50 dark-hover:bg-red-900/20'"
+              routerLink="/app/wishlist"
+              [class]="isActiveRoute('/app/wishlist') ? 'text-red-600 dark-text-red-400 bg-red-50 dark-bg-red-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-red-600 dark-hover:text-red-400 hover:bg-red-50 dark-hover:bg-red-900/20'"
               class="flex items-center px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
               <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -323,28 +324,28 @@
               }
             </a>
             <a
-              routerLink="/products"
-              [class]="isActiveRoute('/products') ? 'text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-700'"
+              routerLink="/app/products"
+              [class]="isActiveRoute('/app/products') ? 'text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-700'"
               class="block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
               Products
             </a>
             <a
-              routerLink="/categories"
+              routerLink="/app/categories"
               [class]="isActiveRoute('/categories') ? 'text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-700'"
               class="block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
               Categories
             </a>
             <a
-              routerLink="/brands"
+              routerLink="/app/brands"
               [class]="isActiveRoute('/brands') ? 'text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-700'"
               class="block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
               Brands
             </a>
             <a
-              routerLink="/orders"
+              routerLink="/app/allorders"
               [class]="isActiveRoute('/orders') ? 'text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-700'"
               class="block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
@@ -358,14 +359,14 @@
             </button>
           } @else {
             <a
-              routerLink="/signin"
+              routerLink="/auth/signin"
               [class]="isActiveRoute('/signin') ? 'text-green-600 dark-text-green-400 bg-green-50 dark-bg-green-900/20 font-semibold' : 'text-gray-700 dark-text-gray-200 hover:text-gray-900 dark-hover:text-white hover:bg-gray-100 dark-hover:bg-gray-700'"
               class="block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >
               Sign in
             </a>
             <a
-              routerLink="/signup"
+              routerLink="/auth/signup"
               [class]="isActiveRoute('/signup') ? 'text-white bg-green-700 font-semibold' : 'text-white bg-green-600 hover:bg-green-700'"
               class="block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200"
             >

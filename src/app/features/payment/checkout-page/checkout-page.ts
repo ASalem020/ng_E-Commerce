@@ -52,7 +52,7 @@ export class CheckoutPage {
           // console.log(this.cartId);
           this.isProcessingCOD = false;
           this.toastr.success('Cash On Delivery Payment Successful');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/app/home']);
         },
         error: (error) => {
           console.error('Cash On Delivery  Payment Error:', error);
@@ -69,7 +69,7 @@ export class CheckoutPage {
           // console.log(res);
           this.isProcessingOnline = false;
           this.toastr.success('Online Payment Successful');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/app/home']);
           if (res.session?.url) {
             window.open(res.session.url, '_self');
           }
@@ -79,7 +79,7 @@ export class CheckoutPage {
           console.error('Online Payment Error:', error);
           this.isProcessingOnline = false;
           this.toastr.error('Online Payment Failed');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/app/home']);
           // You can add a toast notification here
         }
       });

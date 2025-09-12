@@ -29,7 +29,7 @@ export class SigninForm implements OnInit {
     const sessionToken = sessionStorage.getItem('token');
     
     if (persistentToken || sessionToken) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/app/home']);
     }
     
     // Initialize remember me functionality
@@ -66,8 +66,8 @@ export class SigninForm implements OnInit {
         
         this.authService.signin(formData).subscribe({
           next: (res: any) => {
-            localStorage.setItem('token', res.token);
             // console.log('Signin successful:', res);
+            
             // Store token based on remember me setting
             if (this.signinForm.get('rememberMe')?.value) {
               // If remember me is checked, store in localStorage (persistent)
@@ -75,7 +75,7 @@ export class SigninForm implements OnInit {
             } else {
               // If remember me is not checked, store in sessionStorage (temporary)
               sessionStorage.setItem('token', res.token);
-              // localStorage.removeItem('token');
+              localStorage.removeItem('token');
             }
             
             // Store user data if available
@@ -141,7 +141,7 @@ export class SigninForm implements OnInit {
     this.successMessage = 'Successfully signed in! Redirecting...';
     
     timer(2000).subscribe(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/app/home']);
     });
   }
 
