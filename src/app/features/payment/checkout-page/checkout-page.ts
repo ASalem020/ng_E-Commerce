@@ -79,7 +79,7 @@ export class CheckoutPage {
           console.error('Online Payment Error:', error);
           this.isProcessingOnline = false;
           this.toastr.error('Online Payment Failed');
-          this.router.navigate(['/app/home']);
+          this.router.navigate(['/app/cart']);
           // You can add a toast notification here
         }
       });

@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            
+            "baseHref": "/",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -86,6 +86,7 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
+            
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {

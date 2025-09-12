@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
+    production: true,
     apiUrl: 'https://ecommerce.routemisr.com/api/v1/',
     // app url
     appUrl: 'http://localhost:4200/',
