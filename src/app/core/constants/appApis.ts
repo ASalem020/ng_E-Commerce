@@ -20,7 +20,7 @@ export const appApis = {
     clearCart: `${environment.apiUrl}cart`,
     updateQuantity: `${environment.apiUrl}cart/`,
     // Payment APIs
-    onlinePayment: `${environment.apiUrl}orders/checkout-session/:id?url=${environment.appUrl}`,
+    onlinePayment: `${environment.apiUrl}orders/checkout-session/`,
     codPayment: `${environment.apiUrl}orders/`,
 
     // Brands APIs

@@ -8,7 +8,7 @@ import { environment } from "../../../../environments/environments";
 })
 export class PaymentServices extends BaseHttpService {
     onlinePayment(data: {},cartId: string) {
-        return this.post(appApis.onlinePayment + cartId, data,
+        return this.post(appApis.onlinePayment + cartId+`?url=${environment.appUrl}`, data,
             {
                 'token': localStorage.getItem('token')
             }
